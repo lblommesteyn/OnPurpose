@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>On Purpose</title>
+  <title>On Purpose Coaching</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -25,17 +26,141 @@
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
+      max-width: 100vw;
+      overflow-x: hidden !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    @media (max-width: 600px) {
+      html, body {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        padding: 0 !important;
+      }
+      .container, .main-container, section, header {
+        max-width: 100vw !important;
+        width: 100vw !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      section, .section-padding {
+        padding-top: 0.7rem !important;
+        padding-bottom: 0.7rem !important;
+      }
+      header {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0.7rem !important;
+        padding-bottom: 0.7rem !important;
+        gap: 0.3rem !important;
+      }
+      .logo {
+        font-size: 1.2rem !important;
+        word-break: break-word;
+        max-width: 90vw !important;
+        margin-bottom: 0.2rem !important;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.2rem !important;
+        font-size: 1rem !important;
+        justify-content: center;
+        overflow-x: auto;
+        margin-bottom: 0.2rem !important;
+      }
+      nav a {
+        padding: 0.3rem 0.6rem !important;
+        min-width: 40px;
+        min-height: 40px;
+        display: inline-block;
+      }
+      .testimonial-card, .pricing-card {
+        width: 92vw !important;
+        min-width: 0 !important;
+        max-width: 420px !important;
+        margin: 0.5rem auto !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        text-align: center;
+      }
+      .testimonial-video-row {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.5rem !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        justify-content: flex-start !important;
+      }
+      #yt-modal > div {
+        width: 98vw !important;
+        min-width: 0 !important;
+        max-width: 99vw !important;
+      }
+      #yt-modal-iframe {
+        width: 98vw !important;
+        min-width: 0 !important;
+        max-width: 99vw !important;
+        height: 42vw !important;
+        min-height: 140px !important;
+        max-height: 60vw !important;
+      }
+      .cta-btn, .faq-btn-v2, .pricing-cta {
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 1.02rem !important;
+        padding: 0.6rem 1rem !important;
+      }
+      h1, .hero-title, h2, h3 {
+        font-size: clamp(1.3rem, 6vw, 2rem) !important;
+        line-height: 1.2 !important;
+        word-break: break-word;
+        text-align: center !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+    }
+    @media (max-width: 400px) {
+      .logo {
+        font-size: 1.1rem !important;
+      }
+      nav {
+        font-size: 0.97rem !important;
+      }
+    }
+    @media (max-width: 375px) {
+      .logo {
+        font-size: 0.98rem !important;
+      }
+      nav {
+        font-size: 0.91rem !important;
+      }
+    }
+    @media (max-width: 320px) {
+      .logo {
+        font-size: 0.82rem !important;
+      }
+      nav {
+        font-size: 0.82rem !important;
+      }
     }
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding-left: clamp(0.75rem, 2vw, 1.5rem);
+      padding-right: clamp(0.75rem, 2vw, 1.5rem);
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem 0 1.5rem 0;
+      padding-top: clamp(1rem, 3vw, 1.5rem);
+      padding-bottom: clamp(0.7rem, 2vw, 1.2rem);
+      padding-left: clamp(0.75rem, 2vw, 1.5rem);
+      padding-right: clamp(0.75rem, 2vw, 1.5rem);
     }
     .logo {
       font-size: 2rem;
@@ -333,11 +458,11 @@
   <span style="color:#bdbdbd;font-weight:400;font-family:'Inter',sans-serif;">From directionless bursts of motivation to</span><br>
   <span style="color:#bdbdbd;font-weight:400;font-family:'Inter',sans-serif;">Consistent, focused execution (without burning out).</span>
 </h1>
-        <a href="https://calendly.com/myk5/opc-interview" target="_blank" rel="noopener" class="faq-btn-v2" style="background:#fff;color:#18181b;padding:0.75rem 1.5rem;font-size:1rem;border-radius:2rem;border:none;font-weight:500;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background .2s;display:inline-block;text-align:center;text-decoration:none;">Apply now</a>
+        <button class="pricing-cta" style="margin:0 0 1.2rem 0;">Apply now</button>
 
         <div style="max-width:900px;width:100%;margin:1.5rem auto 2.5rem auto;text-align:center;">
   <span style="display:inline-block;font-size:2.2rem;font-weight:400;color:#bdbdbd;line-height:1.12;letter-spacing:-1px;font-family:'Inter',sans-serif;width:100%;">
-    Copy and paste the same blueprint used by <span style='color:#fff;font-weight:900;font-family:Inter,sans-serif;font-size:2.2rem;'>200+ high performing members</span>
+    Copy and paste the same blueprint used by <span style='color:#fff;font-weight:500;font-family:Inter,sans-serif;font-size:2.2rem;'>200+ high performing members</span>
   </span>
 </div>
 
@@ -359,7 +484,7 @@
       <div class="faq-left-v2" style="flex:0 0 320px;">
         <h2 style="font-size:4rem;line-height:1;margin:0 0 1rem 0;font-weight:700;letter-spacing:-2px;">FAQ</h2>
         <p style="color:#ccc;font-size:1rem;margin-bottom:2rem;max-width:260px;">Questions not answered? Use the button below to book a session with Daniel; he'll personally answer any queries you've got.</p>
-        <a href="https://calendly.com/myk5/opc-interview" target="_blank" rel="noopener" class="faq-btn-v2" style="background:#fff;color:#18181b;padding:0.75rem 1.5rem;font-size:1rem;border-radius:2rem;border:none;font-weight:500;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background .2s;display:inline-block;text-align:center;text-decoration:none;">Book your interview now</a>
+        <a href="https://calendly.com/myk5/opc-interview" target="_blank" rel="noopener" class="pricing-cta" style="text-decoration:none;">Book your interview now</a>
       </div>
       <div class="faq-right-v2" style="flex:1;max-width:800px;">
         <div class="faq-dropdowns-v2" style="display:flex;flex-direction:column;gap:0.5rem;">
@@ -705,6 +830,354 @@
   <button class="pricing-cta">Join now</button>
 </section>
 <style>
+/* --- Responsive Helpers & Best Practices --- */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.picture-responsive {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+.col {
+  flex: 1 1 0;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+@media (max-width: 900px) {
+  .row {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* Utility padding/margin classes */
+.p-responsive { padding: clamp(0.7rem, 3vw, 2rem); }
+.mt-responsive { margin-top: clamp(0.7rem, 3vw, 2rem); }
+.mb-responsive { margin-bottom: clamp(0.7rem, 3vw, 2rem); }
+/* Prevent horizontal scroll everywhere */
+html, body {
+  overflow-x: hidden !important;
+  width: 100vw;
+}
+/* --- ULTRA-RESPONSIVE SITE STYLES --- */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  width: 100vw;
+  overflow-x: hidden;
+}
+body {
+  min-width: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: clamp(0.97rem, 1.7vw, 1.13rem);
+  line-height: 1.5;
+}
+.main-container, .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: clamp(0.5rem, 4vw, 2.5rem);
+  padding-right: clamp(0.5rem, 4vw, 2.5rem);
+}
+section, .section-padding {
+  padding-top: clamp(1rem, 3vw, 2rem);
+  padding-bottom: clamp(1rem, 3vw, 2rem);
+  padding-left: clamp(0.75rem, 2vw, 1.5rem);
+  padding-right: clamp(0.75rem, 2vw, 1.5rem);
+}
+.hero-title, h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+h2 {
+  font-size: clamp(1.25rem, 3vw, 2.5rem);
+}
+h3 {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+}
+p, .body-text {
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.7rem, 2vw, 2.2rem);
+  align-items: center;
+  justify-content: space-between;
+}
+.cta-btn, .faq-btn-v2, .pricing-cta {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  padding: clamp(0.7rem, 2vw, 1.1rem) clamp(1.2rem, 4vw, 2.3rem);
+  min-width: 44px;
+  min-height: 44px;
+}
+footer, .footer {
+  font-size: clamp(0.9rem, 1vw, 1.05rem);
+  padding: clamp(1rem, 2vw, 2.2rem) 0.2rem;
+}
+/* Testimonial row and cards */
+.testimonial-video-row {
+  gap: clamp(0.5rem, 2vw, 2rem) !important;
+  padding-left: clamp(0.2rem, 3vw, 1.2rem) !important;
+  padding-right: clamp(0.2rem, 3vw, 1.2rem) !important;
+}
+.testimonial-card {
+  width: min(94vw, 340px) !important;
+  min-width: 170px !important;
+  max-width: 99vw !important;
+}
+.testimonial-thumb-wrap {
+  height: clamp(140px, 25vw, 320px) !important;
+}
+.testimonial-desc, .testimonial-name {
+  font-size: clamp(0.92rem, 1.3vw, 1.08rem) !important;
+}
+#testimonial-arrow-left, #testimonial-arrow-right {
+  width: clamp(32px, 5vw, 38px) !important;
+  height: clamp(32px, 5vw, 38px) !important;
+}
+/* Pricing card */
+.pricing-card {
+  max-width: min(96vw, 370px) !important;
+  padding: clamp(1.1rem, 4vw, 2.5rem) clamp(0.7rem, 5vw, 2.5rem) clamp(1.1rem, 4vw, 2rem) clamp(0.7rem, 5vw, 2.5rem) !important;
+  border-radius: clamp(1.1rem, 3vw, 2rem) !important;
+}
+.pricing-title {
+  font-size: clamp(1.05rem, 2vw, 1.35rem) !important;
+}
+.pricing-price {
+  font-size: clamp(1.7rem, 6vw, 3.1rem) !important;
+}
+.pricing-lifetime {
+  font-size: clamp(1rem, 2vw, 1.3rem) !important;
+}
+.pricing-features li {
+  font-size: clamp(0.97rem, 1.4vw, 1.12rem) !important;
+  margin-bottom: clamp(0.5rem, 2vw, 1.15rem) !important;
+}
+.pricing-cta {
+  font-size: clamp(1.01rem, 1.5vw, 1.13rem) !important;
+  padding: clamp(0.7rem, 2vw, 0.85rem) clamp(1.3rem, 4vw, 2.3rem) !important;
+}
+/* Modal */
+#yt-modal > div {
+  width: min(99vw, 640px) !important;
+}
+#yt-modal-iframe {
+  height: clamp(170px, 45vw, 360px) !important;
+  min-height: 140px !important;
+  max-height: 60vw !important;
+}
+/* Touch-friendly for mobile */
+@media (max-width: 600px) {
+  nav, .main-container, .container {
+    padding-left: 0.2rem !important;
+    padding-right: 0.2rem !important;
+  }
+  .testimonial-card, .pricing-card {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .cta-btn, .faq-btn-v2, .pricing-cta {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 1.04rem !important;
+  }
+  #testimonial-arrow-left, #testimonial-arrow-right {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+/* Brand Typography, Kerning, and Bolding */
+h1, .hero-title {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+h2 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+h3 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+h4 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+h5, h6 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+p, .body-text, .testimonial-desc, .testimonial-name, .pricing-features li {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 400;
+}
+.label, .small, .faq-btn-v2, .pricing-lifetime {
+  letter-spacing: 0.25em;
+  font-weight: 500;
+}
+strong, b {
+  font-weight: 700 !important;
+}
+@media (max-width: 600px) {
+  h1, .hero-title, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.03em !important;
+  }
+  p, .body-text, .testimonial-desc, .testimonial-name, .pricing-features li {
+    letter-spacing: -0.03em !important;
+  }
+}
+/* General responsive layout */
+@media (max-width: 1200px) {
+  body, html {
+    font-size: 16px;
+  }
+  .main-container {
+    max-width: 98vw !important;
+    padding: 0 2vw !important;
+  }
+}
+@media (max-width: 900px) {
+  body, html {
+    font-size: 15px;
+  }
+  .main-container {
+    max-width: 100vw !important;
+    padding: 0 0.5vw !important;
+  }
+  h1, .hero-title { font-size: 2.2rem !important; }
+  h2 { font-size: 1.4rem !important; }
+  .cta-btn, .faq-btn-v2 { font-size: 1.07rem !important; padding: 0.7rem 1.5rem !important; }
+  nav { flex-direction: column !important; gap: 0.7rem !important; }
+}
+@media (max-width: 600px) {
+  body, html {
+    font-size: 14px;
+  }
+  .main-container {
+    padding: 0 0.2vw !important;
+  }
+  h1, .hero-title { font-size: 1.36rem !important; }
+  h2 { font-size: 1.08rem !important; }
+  .cta-btn, .faq-btn-v2 { font-size: 0.98rem !important; padding: 0.62rem 1.1rem !important; }
+  nav { flex-direction: column !important; gap: 0.5rem !important; }
+  .footer, footer { font-size: 0.93rem !important; padding: 1.1rem 0.2rem !important; }
+  .faq-v2 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.7rem !important;
+    margin: 2rem 0 0 0 !important;
+  }
+  .faq-left-v2 {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .faq-right-v2 {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-top: 0.5rem !important;
+    display: block !important;
+  }
+}
+/* Responsive testimonial section */
+@media (max-width: 900px) {
+  .testimonial-video-row {
+    gap: 1rem !important;
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+  }
+  .testimonial-card {
+    width: 85vw !important;
+    min-width: 220px !important;
+    max-width: 320px !important;
+  }
+}
+@media (max-width: 600px) {
+  .testimonial-video-row {
+    gap: 0.5rem !important;
+    padding-left: 0.2rem !important;
+    padding-right: 0.2rem !important;
+  }
+  .testimonial-card {
+    width: 94vw !important;
+    min-width: 170px !important;
+    max-width: 99vw !important;
+  }
+  .testimonial-thumb-wrap {
+    height: 170px !important;
+  }
+  .testimonial-desc {
+    font-size: 0.97rem !important;
+  }
+  .testimonial-name {
+    font-size: 0.92rem !important;
+  }
+  #testimonial-arrow-left, #testimonial-arrow-right {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+/* Responsive pricing card */
+@media (max-width: 600px) {
+  .pricing-card {
+    padding: 1.3rem 0.7rem 1.1rem 0.7rem !important;
+    max-width: 96vw !important;
+    border-radius: 1.2rem !important;
+  }
+  .pricing-title {
+    font-size: 1.1rem !important;
+  }
+  .pricing-price {
+    font-size: 2.1rem !important;
+  }
+  .pricing-lifetime {
+    font-size: 1.05rem !important;
+  }
+  .pricing-features li {
+    font-size: 0.98rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+  .pricing-cta {
+    font-size: 1.01rem !important;
+    padding: 0.7rem 1.3rem !important;
+  }
+}
+/* Responsive modal */
+@media (max-width: 700px) {
+  #yt-modal > div {
+    width: 98vw !important;
+    max-width: 99vw !important;
+  }
+  #yt-modal-iframe {
+    height: 45vw !important;
+    min-height: 170px !important;
+    max-height: 60vw !important;
+  }
+}
 .pricing-card {
   background: radial-gradient(ellipse at 80% 0,#181c18 60%,#101210 100%);
   border-radius: 2rem;
@@ -785,6 +1258,18 @@
       &copy; On Purpose 2025, All rights reserved
     </footer>
   </div>
+<script>
+// Hide header/nav on mobile devices
+function hideHeaderOnMobile() {
+  var isMobile = window.matchMedia('(max-width: 600px)').matches || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (isMobile) {
+    var header = document.querySelector('.header-v2');
+    if(header) header.style.display = 'none';
+  }
+}
+hideHeaderOnMobile();
+window.addEventListener('resize', hideHeaderOnMobile);
+</script>
 </body>
   <script>
     // Alternating marquee for 3 testimonial rows, each with its own speed
