@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Academy Clone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #7B61FF;
+      --primary-dark: #5a3fff;
+      --background: #0a0a0a;
+      --card-bg: #18181b;
+      --text: #e5e5e5;
+      --accent: #00e887;
+      --border: #27272a;
+    }
+    html, body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at 60% 0%, #2a174e 0%, #18181b 40%, #0a0a0a 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0 1.5rem 0;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: #bdbdbd;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+    nav a.cta {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.75rem 2rem;
+      margin-left: 2rem;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    nav a.cta:hover {
+      background: var(--primary-dark);
+    }
+    .hero {
+      text-align: center;
+      padding: 5rem 0 3rem 0;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      color: #bdbdbd;
+      margin-bottom: 2.5rem;
+    }
+    .hero .cta-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 1rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 12px 0 rgba(123,97,255,0.15);
+      font-family: 'Inter', sans-serif;
+    }
+    .hero .cta-btn:hover {
+      background: var(--primary-dark);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 24px rgba(123,97,255,0.12);
+      transform: translateY(-5px);
+    }
+    .feature-card h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .feature-card p {
+      color: #bdbdbd;
+      margin-bottom: 0;
+    }
+    .testimonials {
+      margin: 6rem 0 4rem 0;
+      text-align: center;
+    }
+    .testimonial-marquee-3rows {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .testimonial-marquee-row {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      white-space: nowrap;
+      scroll-behavior: smooth;
+      padding-bottom: 0.5rem;
+      border-radius: 1rem;
+      background: rgba(24,24,27,0.7);
+    }
+    .testimonial-marquee-row::-webkit-scrollbar {
+      display: none;
+    }
+    .testimonial-card {
+      min-width: 260px;
+      max-width: 320px;
+      margin: 0 1rem 0 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem 1rem 1rem 1rem;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .testimonial-card img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-bottom: 0.75rem;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+    .testimonial-card .name {
+      font-weight: 600;
+      color: #fff;
+      margin-top: 0.5rem;
+    }
+    .testimonial-card .role {
+      color: #bdbdbd;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-card .text {
+      color: #ffce6a;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+    .testimonials h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+    .testimonial-wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 8px 24px rgba(123,97,255,0.12);
+      transform: translateY(-5px);
+    }
+    .testimonial-card img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 2px solid var(--primary);
+    }
+    .testimonial-card .name {
+      font-weight: 600;
+      margin-top: 1rem;
+      color: var(--primary);
+    }
+    .testimonial-card .role {
+      color: #bdbdbd;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-card .text {
+      font-style: italic;
+      color: #e5e5e5;
+      margin-bottom: 0.5rem;
+    }
+    .pricing {
+      background: var(--card-bg);
+      border-radius: 1.5rem;
+      padding: 4rem 1.5rem;
+      margin: 4rem 0;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(123,97,255,0.08);
+      border: 1px solid var(--border);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pricing h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .pricing .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .pricing ul {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+      color: #bdbdbd;
+      text-align: left;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pricing ul li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.25em;
+      position: relative;
+    }
+    .pricing ul li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .pricing .cta-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 1rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 12px 0 rgba(123,97,255,0.15);
+      margin-top: 2rem;
+    }
+    .pricing .cta-btn:hover {
+      background: var(--primary-dark);
+    }
+    footer {
+      text-align: center;
+      color: #bdbdbd;
+      font-size: 1rem;
+      padding: 3rem 0 2rem 0;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1.1rem; }
+      .features, .testimonial-wall { grid-template-columns: 1fr; }
+      .pricing { padding: 2rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HERO SECTION -->
+    <section class="hero-v2">
+      <header class="header-v2">
+        <div class="logo-v2">On Purpose</div>
+        <nav class="nav-v2">
+          <a href="#pricing">Pricing</a>
+          <a href="#faq-v2">FAQ</a>
+          <a href="#testimonials">Community</a>
+          <a href="#" class="cta-v2">Join now</a>
+        </nav>
+      </header>
+      <div class="hero-content-v2">
+        <h1><span>From directionless bursts of motivation to</span><br><span>Consistent, focused execution (without burning out).</span></h1>
+        <button class="faq-btn-v2" style="background:#fff;color:#18181b;padding:0.75rem 1.5rem;font-size:1rem;border-radius:2rem;border:none;font-weight:500;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background .2s;">Reserve My Spot →</button>
+
+      </div>
+    </section>
+
+    <!-- BLUEPRINT HEADLINE ABOVE VIDEO -->
+    <!-- ... existing content ... -->
+    <div style="max-width:800px;width:100%;margin:0 auto 1.5rem auto;text-align:center;">
+      <span style="display:inline-block;white-space:nowrap;font-size:1.6rem;font-weight:900;color:#e5e5e5;line-height:1.12;letter-spacing:-1px;">
+        Copy and paste the same blueprint used by <span style='color:#fff;font-weight:900;'>200+ high performers members</span>
+      </span>
+    </div>
+    <!-- YOUTUBE VIDEO SECTION -->
+    <section class="main-video-v2">
+      <div class="main-video-wrapper-v2">
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 1.2rem; box-shadow: 0 2px 32px 0 #000a, 0 1.5px 8px 0 #0008;"></iframe>
+      </div>
+    </section>
+
+
+
+   
+    <!-- FAQ SECTION -->
+    <section class="faq-v2" id="faq-v2" style="display:flex;align-items:flex-start;gap:2.5rem;margin:4rem 0 0 0;">
+      <div class="faq-left-v2" style="flex:0 0 320px;">
+        <h2 style="font-size:4rem;line-height:1;margin:0 0 1rem 0;font-weight:700;letter-spacing:-2px;">FAQ</h2>
+        <p style="color:#ccc;font-size:1rem;margin-bottom:2rem;max-width:260px;">Questions not answered? Use the button below to book a session with Daniel; he'll personally answer any queries you've got.</p>
+        <button class="faq-btn-v2" style="background:#fff;color:#18181b;padding:0.75rem 1.5rem;font-size:1rem;border-radius:2rem;border:none;font-weight:500;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background .2s;">Book free strategy session</button>
+      </div>
+      <div class="faq-right-v2" style="flex:1;max-width:800px;">
+        <div class="faq-dropdowns-v2" style="display:flex;flex-direction:column;gap:0.5rem;">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item-v2 open" style="background:linear-gradient(90deg,#18181b 90%,#5a3fff11 100%);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:border-color .2s;">
+            <button class="faq-question-v2" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:#fff;font-size:2rem;font-weight:700;padding:1.5rem 2rem 1.5rem 1.5rem;cursor:pointer;text-align:left;transition:color .2s,background .2s;outline:none;">
+              <span>Can't I just learn everything for free online?</span>
+              <span class="faq-arrow-v2" style="display:inline-block;transition:transform .3s;font-size:2rem;color:#ffce6a;transform:rotate(90deg);">&#8250;</span>
+            </button>
+            <div class="faq-answer-v2" style="max-height:1000px;overflow:hidden;padding:0 2rem;color:#fff;background:none;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;">
+              <div style="padding-bottom:1.5rem;padding-top:0.5rem;">
+                <p style="margin:0 0 0.5rem 0;">In theory, yes. But... Have you tried? It's very difficult – speaking from experience and YEARS of wasted time. I found that there's 3 main reasons...</p>
+                <ol style="margin:0 0 0.5rem 1.5rem;padding:0 0 0 1.2rem;">
+                  <li>The sheer amount of information and irrelevant content will overwhelm you into further procrastination/perfectionism. People get motivated for a few days or weeks then start getting "busy", skip a day, lose motivation then give up.</li>
+                  <li>The information will not change your life. The consistent implementation and taking action on that information will.</li>
+                  <li>You can find general information, but do random things and you'll get random results. (Which will burn you out leaving you worse than before). You don't have the personalized systems, experience, or accountability to get you started & consistently improving without burning out.</li>
+                </ol>
+                <p style="margin:0;">In the On Purpose Collective, the centralized information is just 20% of the benefits, the value lies in accountability, personalized proven systems for overcoming bad habits and creating consistency, and being in the right environment surrounded by other highly ambitious high performers.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 2 -->
+          <div class="faq-item-v2" style="background:linear-gradient(90deg,#18181b 90%,#5a3fff11 100%);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:border-color .2s;">
+            <button class="faq-question-v2" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:#fff;font-size:2rem;font-weight:700;padding:1.5rem 2rem 1.5rem 1.5rem;cursor:pointer;text-align:left;transition:color .2s,background .2s;outline:none;">
+              <span>What are your credentials?</span>
+              <span class="faq-arrow-v2" style="display:inline-block;transition:transform .3s;font-size:2rem;color:#ffce6a;">&#8250;</span>
+            </button>
+            <div class="faq-answer-v2" style="max-height:0;overflow:hidden;padding:0 2rem;color:#fff;background:none;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;">
+              <div style="padding-bottom:1.5rem;padding-top:0.5rem;">
+                <p style="margin:0 0 0.5rem 0;">My coaching is based on countless research from reputable sources surrounding Cognitive Behavioural Therapy (CBT), neuroscience, psychology, productivity, self-help, and more. My approach is backed by research, driven by results and tailored to each individual.</p>
+                <p style="margin:0 0 0.5rem 0;">I've personally experienced the immense struggles you're likely facing right now for years. I know how hard it can be. I believe, the most qualified person is someone who's gone through it before. For the past 3 years and counting, I've studied the works of leading experts, tested these strategies, and helped create life-changing results for hundreds of people.</p>
+                <p style="margin:0 0 0.5rem 0;">Lastly, our confidence comes from the <a href="#" style="color:#ffce6a;text-decoration:underline">feedback and client testimonials</a> we receive from all our members. Not only do we get amazing results for clients, but we also have a guarantee that no other coach in the world provides.</p>
+                <p style="margin:0 0 0.5rem 0;">If you do not achieve your desired results by the end of the coaching duration, we give you a FULL refund and will continue to coach you for as long as it takes for you to get results. We make it essentially impossible for you to fail.</p>
+                <p style="margin:0;">Book your free <a href="#" style="color:#ffce6a;text-decoration:underline">strategy call</a>!</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 3 -->
+          <div class="faq-item-v2" style="background:linear-gradient(90deg,#18181b 90%,#5a3fff11 100%);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:border-color .2s;">
+            <button class="faq-question-v2" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:#fff;font-size:2rem;font-weight:700;padding:1.5rem 2rem 1.5rem 1.5rem;cursor:pointer;text-align:left;transition:color .2s,background .2s;outline:none;">
+              <span>What's the difference between therapy and coaching?</span>
+              <span class="faq-arrow-v2" style="display:inline-block;transition:transform .3s;font-size:2rem;color:#ffce6a;">&#8250;</span>
+            </button>
+            <div class="faq-answer-v2" style="max-height:0;overflow:hidden;padding:0 2rem;color:#fff;background:none;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;">
+              <div style="padding-bottom:1.5rem;padding-top:0.5rem;">
+                <p style="margin:0 0 0.5rem 0;">Therapy looks backwards with an emphasis on your past, connecting it to the present. They help you more with focusing on going from a negative state to 0. The On Purpose Collective will be to help you go from 0 to 1.</p>
+                <p style="margin:0 0 0.5rem 0;">Coaching won't be about diving into deep trauma or mental health diagnoses. Instead, we will help you establish a foundation to forge a clear identity, live to your highest potential and go to bed knowing you genuinely gave it your all.</p>
+                <p style="margin:0 0 0.5rem 0;">It's about practical strategies for consistent action. Coaching should never replace therapy or other medical help – rather, it compliments and nurtures your growth.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 4 -->
+          <div class="faq-item-v2" style="background:linear-gradient(90deg,#18181b 90%,#5a3fff11 100%);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:border-color .2s;">
+            <button class="faq-question-v2" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:#fff;font-size:2rem;font-weight:700;padding:1.5rem 2rem 1.5rem 1.5rem;cursor:pointer;text-align:left;transition:color .2s,background .2s;outline:none;">
+              <span>What's required of me?</span>
+              <span class="faq-arrow-v2" style="display:inline-block;transition:transform .3s;font-size:2rem;color:#ffce6a;">&#8250;</span>
+            </button>
+            <div class="faq-answer-v2" style="max-height:0;overflow:hidden;padding:0 2rem;color:#fff;background:none;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;">
+              <div style="padding-bottom:1.5rem;padding-top:0.5rem;">
+                <p style="margin:0 0 0.5rem 0;">2-5 Hours/week and an “I will do whatever it takes to succeed” to actively implement and experiment!</p>
+                <p style="margin:0;">However, the more you give, the more you’ll get – the value you receive will depend on how proactive you are.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 5 -->
+          <div class="faq-item-v2" style="background:linear-gradient(90deg,#18181b 90%,#5a3fff11 100%);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:border-color .2s;">
+            <button class="faq-question-v2" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:#fff;font-size:2rem;font-weight:700;padding:1.5rem 2rem 1.5rem 1.5rem;cursor:pointer;text-align:left;transition:color .2s,background .2s;outline:none;">
+              <span>Who is high-performance coaching for?</span>
+              <span class="faq-arrow-v2" style="display:inline-block;transition:transform .3s;font-size:2rem;color:#ffce6a;">&#8250;</span>
+            </button>
+            <div class="faq-answer-v2" style="max-height:0;overflow:hidden;padding:0 2rem;color:#fff;background:none;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;">
+              <div style="padding-bottom:1.5rem;padding-top:0.5rem;">
+                <p style="margin:0;">I tailor my high-performance coaching for young entrepreneurs, creators, and the highly ambitious. High Performance is a necessary skillset that many forego which often causes severe procrastination, burnout, lack of consistency, bad habits, lack of energy, negative thoughts, overwhelm, etc...</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ Item 6 -->
+          <div class="faq-item-v2" style="background:linear-gradient(90deg,#18181b 90%,#5a3fff11 100%);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:border-color .2s;">
+            <button class="faq-question-v2" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:#fff;font-size:2rem;font-weight:700;padding:1.5rem 2rem 1.5rem 1.5rem;cursor:pointer;text-align:left;transition:color .2s,background .2s;outline:none;">
+              <span>I'm worried a routine will make my life boring.</span>
+              <span class="faq-arrow-v2" style="display:inline-block;transition:transform .3s;font-size:2rem;color:#ffce6a;">&#8250;</span>
+            </button>
+            <div class="faq-answer-v2" style="max-height:0;overflow:hidden;padding:0 2rem;color:#fff;background:none;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;">
+              <div style="padding-bottom:1.5rem;padding-top:0.5rem;">
+                <p style="margin:0 0 0.5rem 0;">Totally understandable! I thought the same</p>
+                <p style="margin:0 0 0.5rem 0;">High Performance is not living the same day over and over again. (I would likely hate that more than you).</p>
+                <p style="margin:0 0 0.5rem 0;">Having a consistent routine actually creates a more adventurous life as it helps create freedom. Those who don’t have habits, routines, or organization have the LEAST amount of freedom – James Clear (Author of atomic habits)</p>
+                <p style="margin:0 0 0.5rem 0;">If you’re always caught up making decisions for the small tasks, you’ll never have time/energy for the important decisions. If you struggle with things like getting 7-9 hours of sleep, working out, staying focused on your priorities, waking up energized… It’s impossible to expect greatness in the bigger things.</p>
+                <p style="margin:0;">Book your free <a href="#" style="color:#ffce6a;text-decoration:underline">strategy call</a> with me and let’s talk about how you can start living to your fullest potential.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      // FAQ dropdown JS: only one open at a time
+      document.addEventListener('DOMContentLoaded', function () {
+        const items = document.querySelectorAll('.faq-item-v2');
+        items.forEach((item, idx) => {
+          const answer = item.querySelector('.faq-answer-v2');
+          const arrow = item.querySelector('.faq-arrow-v2');
+          if(idx === 0) {
+            item.classList.add('open');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            arrow.style.transform = 'rotate(90deg)';
+          } else {
+            item.classList.remove('open');
+            answer.style.maxHeight = '0';
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        });
+        document.querySelectorAll('.faq-question-v2').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const parent = btn.closest('.faq-item-v2');
+            const answer = parent.querySelector('.faq-answer-v2');
+            const open = parent.classList.contains('open');
+            // Close all
+            items.forEach((item) => {
+              item.classList.remove('open');
+              item.querySelector('.faq-answer-v2').style.maxHeight = '0';
+              item.querySelector('.faq-arrow-v2').style.transform = 'rotate(0deg)';
+            });
+            // Decide which item to keep open so there is ALWAYS one open
+            if (!open) {
+              // Open the clicked item
+              parent.classList.add('open');
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+              parent.querySelector('.faq-arrow-v2').style.transform = 'rotate(90deg)';
+            } else {
+              // If the clicked item was already open, revert to keeping the first FAQ open
+              const first = items[0];
+              const firstAnswer = first.querySelector('.faq-answer-v2');
+              first.classList.add('open');
+              firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+              first.querySelector('.faq-arrow-v2').style.transform = 'rotate(90deg)';
+            }
+          });
+        });
+      });
+    </script>
+
+    <section id="testimonials" class="testimonials">
+      <h2>What Our Members Say</h2>
+      <div class="testimonial-marquee-3rows">
+        <div class="testimonial-marquee-row" id="testimonial-row-1">
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member Photo"><div class="text">"This program changed my business!"</div><div class="name">Sophie</div><div class="role">Entrepreneur</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Member Photo"><div class="text">"The community and coaching are next level."</div><div class="name">Daniel</div><div class="role">Content Creator</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Member Photo"><div class="text">"Worth every penny! Highly recommend."</div><div class="name">Omar</div><div class="role">Coach</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Member Photo"><div class="text">"Super intuitive and motivating!"</div><div class="name">Ling</div><div class="role">Influencer</div></div>
+          <!-- DUPLICATE FOR MARQUEE -->
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member Photo"><div class="text">"This program changed my business!"</div><div class="name">Sophie</div><div class="role">Entrepreneur</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Member Photo"><div class="text">"The community and coaching are next level."</div><div class="name">Daniel</div><div class="role">Content Creator</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Member Photo"><div class="text">"Worth every penny! Highly recommend."</div><div class="name">Omar</div><div class="role">Coach</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Member Photo"><div class="text">"Super intuitive and motivating!"</div><div class="name">Ling</div><div class="role">Influencer</div></div>
+        </div>
+        <div class="testimonial-marquee-row" id="testimonial-row-2">
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Member Photo"><div class="text">"The community and coaching are next level."</div><div class="name">Daniel</div><div class="role">Content Creator</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Member Photo"><div class="text">"Worth every penny! Highly recommend."</div><div class="name">Omar</div><div class="role">Coach</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Member Photo"><div class="text">"Super intuitive and motivating!"</div><div class="name">Ling</div><div class="role">Influencer</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member Photo"><div class="text">"This program changed my business!"</div><div class="name">Sophie</div><div class="role">Entrepreneur</div></div>
+          <!-- DUPLICATE FOR MARQUEE -->
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Member Photo"><div class="text">"The community and coaching are next level."</div><div class="name">Daniel</div><div class="role">Content Creator</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Member Photo"><div class="text">"Worth every penny! Highly recommend."</div><div class="name">Omar</div><div class="role">Coach</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Member Photo"><div class="text">"Super intuitive and motivating!"</div><div class="name">Ling</div><div class="role">Influencer</div></div>
+          <div class="testimonial-card"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member Photo"><div class="text">"This program changed my business!"</div><div class="name">Sophie</div><div class="role">Entrepreneur</div></div>
+        </div>
+
+      </div>
+
+    </section>
+    <section id="pricing" class="pricing">
+      <h2>On Purpose Collective</h2>
+      <div class="price">$599 <span style="font-size:1rem;font-weight:400;color:#bdbdbd">/ lifetime</span></div>
+      <ul>
+        <li>2 Weekly Live community calls</li>
+        <li>Private High Performance Community</li>
+        <li>Gamified Accountability & Challenges</li>
+        <li>5 Pillar Modules</li>
+      </ul>
+      <button class="cta-btn">Join Now</button>
+    </section>
+    <footer>
+      &copy; On Purpose 2025, All rights reserved
+    </footer>
+  </div>
+</body>
+  <script>
+    // Alternating marquee for 3 testimonial rows, each with its own speed
+    function startAlternatingMarquee(rowId, speed, initialDirection = 1) {
+      const row = document.getElementById(rowId);
+      if (!row) return;
+      const totalScroll = row.scrollWidth / 2;
+      let direction = initialDirection;
+      function animate() {
+        row.scrollLeft += direction * speed;
+        if (row.scrollLeft >= totalScroll) {
+          direction = -1;
+        } else if (row.scrollLeft <= 0) {
+          direction = 1;
+        }
+        requestAnimationFrame(animate);
+      }
+      row.scrollLeft = 0;
+      animate();
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+      // Each row alternates at a different speed and can have a different initial direction
+      startAlternatingMarquee('testimonial-row-1', 0.6, 1); // left-to-right first
+      startAlternatingMarquee('testimonial-row-2', 1.1, -1); // right-to-left first
+      startAlternatingMarquee('testimonial-row-3', 0.4, 1); // left-to-right first
+    });
+  </script>
+</html>
